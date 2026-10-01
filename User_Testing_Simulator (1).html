@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Testing Simulator</title>
+<style>
+  :root{
+    --bg:#f5f7fa;
+    --panel:#ffffff;
+    --text:#1f2937;
+    --muted:#5b6472;
+    --border:#cbd5e1;
+    --accent:#9e1b32;
+    --accent-dark:#761426;
+    --good:#146c43;
+    --warn:#8a4b08;
+    --info:#1e40af;
+    --focus:#1d4ed8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:1.55;
+    color:var(--text);
+    background:var(--bg);
+  }
+  .skip-link{
+    position:absolute;
+    left:-9999px;
+  }
+  .skip-link:focus{
+    left:1rem;
+    top:1rem;
+    z-index:9999;
+    background:#fff;
+    padding:.75rem 1rem;
+    border:3px solid var(--focus);
+  }
+  header{
+    background:var(--accent);
+    color:#fff;
+    padding:1.25rem 1rem;
+  }
+  header .wrap, main, footer{
+    max-width:1000px;
+    margin:0 auto;
+  }
+  h1{
+    margin:0;
+    font-size:clamp(1.9rem,4vw,2.7rem);
+  }
+  .tagline{
+    margin:.35rem 0 0;
+    font-size:1.05rem;
+  }
+  main{padding:1rem}
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:1.25rem;
+    margin:1rem 0;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+  }
+  .muted{color:var(--muted)}
+  .badge{
+    display:inline-block;
+    padding:.3rem .6rem;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background:#f8fafc;
+    font-weight:700;
+    margin-bottom:.6rem;
+  }
+  progress{
+    width:100%;
+    height:1rem;
+  }
+  fieldset{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:1rem;
+    margin:1rem 0;
+  }
+  legend{
+    font-weight:700;
+    padding:0 .35rem;
+  }
+  .choice{
+    display:block;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:.85rem;
+    margin:.6rem 0;
+    cursor:pointer;
+    background:#fff;
+  }
+  .choice:hover{background:#f8fafc}
+  .choice input{
+    margin-right:.6rem;
+    transform:scale(1.15);
+  }
+  button{
+    border:0;
+    border-radius:10px;
+    padding:.8rem 1rem;
+    min-height:44px;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+  }
+  button.primary{
+    background:var(--accent);
+    color:#fff;
+  }
+  button.primary:hover,
+  button.primary:focus{
+    background:var(--accent-dark);
+  }
+  button.secondary{
+    background:#e2e8f0;
+    color:#111827;
+  }
+  .button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.75rem;
+    margin-top:1rem;
+  }
+  textarea{
+    width:100%;
+    min-height:105px;
+    padding:.75rem;
+    border:1px solid var(--border);
+    border-radius:8px;
+    font:inherit;
+  }
+  button:focus,
+  input:focus,
+  textarea:focus{
+    outline:3px solid var(--focus);
+    outline-offset:2px;
+  }
+  .feedback{
+    border-left:5px solid var(--info);
+    background:#eff6ff;
+    padding:1rem;
+    margin-top:1rem;
+    border-radius:8px;
+  }
+  .feedback.good{
+    border-left-color:var(--good);
+    background:#f1fbf6;
+  }
+  .feedback.caution{
+    border-left-color:var(--warn);
+    background:#fff8ef;
+  }
+  .user-response{
+    border-left:5px solid var(--accent);
+    background:#fff7f8;
+    padding:1rem;
+    margin-top:1rem;
+    border-radius:8px;
+  }
+  .question-type{
+    font-weight:700;
+  }
+  .summary-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:.8rem;
+  }
+  .summary-card{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:1rem;
+    background:#fafafa;
+  }
+  .hidden{display:none !important}
+  .tipbox{
+    border:1px solid var(--border);
+    background:#f8fafc;
+    padding:1rem;
+    border-radius:10px;
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important; transition:none !important}
+  }
+  @media print{
+    header,#intro,#simControls,.button-row{display:none !important}
+    body{background:#fff}
+    .panel{box-shadow:none;border:1px solid #999}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+  <div class="wrap">
+    <h1>User Testing Simulator</h1>
+    <p class="tagline">Practice asking questions that reveal what users actually experience, need, and do.</p>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<section id="intro" class="panel" aria-labelledby="introTitle">
+  <h2 id="introTitle">How this lab works</h2>
+  <p>You will interview several simulated stakeholders. In each scenario, choose the question you think will produce the most useful evidence.</p>
+  <p>The simulator will show how the user might respond, identify the type of question you asked, and explain why some questions reveal more than others.</p>
+
+  <div class="tipbox">
+    <h3>What makes a strong user-testing question?</h3>
+    <p>Strong questions usually ask about <strong>specific experiences, behaviors, decisions, barriers, and past actions</strong>. They avoid leading the user toward a preferred answer.</p>
+  </div>
+
+  <div class="button-row">
+    <button class="primary" id="startBtn">Start Simulator</button>
+  </div>
+</section>
+
+<section id="simulator" class="panel hidden" aria-labelledby="scenarioTitle">
+  <span class="badge" id="scenarioLabel">Scenario 1 of 6</span>
+  <h2 id="scenarioTitle"></h2>
+  <p id="scenarioContext"></p>
+
+  <p><strong>Stakeholder:</strong> <span id="stakeholder"></span></p>
+  <p><strong>Your testing goal:</strong> <span id="goal"></span></p>
+
+  <progress id="progress" max="6" value="1" aria-label="Scenario progress"></progress>
+  <p class="muted" id="progressText">1 of 6 scenarios</p>
+
+  <form id="questionForm">
+    <fieldset>
+      <legend>Which question would you ask first?</legend>
+      <div id="questionChoices"></div>
+    </fieldset>
+
+    <label for="reason"><strong>Why did you choose this question?</strong></label>
+    <textarea id="reason" placeholder="Explain what you hope to learn from asking this question."></textarea>
+
+    <div class="button-row" id="simControls">
+      <button class="primary" type="submit" id="askBtn">Ask the User</button>
+      <button class="secondary hidden" type="button" id="tryAnotherBtn">Try Another Question</button>
+      <button class="secondary hidden" type="button" id="nextBtn">Next Scenario</button>
+    </div>
+  </form>
+
+  <div id="userResponse" class="user-response hidden" role="status" aria-live="polite"></div>
+  <div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div>
+</section>
+
+<section id="reflection" class="panel hidden" aria-labelledby="reflectionTitle">
+  <h2 id="reflectionTitle">Final Reflection</h2>
+
+  <label for="r1"><strong>1. What kinds of questions produced the most useful information?</strong></label>
+  <textarea id="r1"></textarea>
+
+  <label for="r2"><strong>2. What is one risk of asking leading or hypothetical questions?</strong></label>
+  <textarea id="r2"></textarea>
+
+  <label for="r3"><strong>3. How would you use user feedback to revise a prototype or idea?</strong></label>
+  <textarea id="r3"></textarea>
+
+  <div class="button-row">
+    <button class="primary" id="buildReportBtn">Build My Report</button>
+  </div>
+</section>
+
+<section id="report" class="panel hidden" aria-labelledby="reportTitle">
+  <h2 id="reportTitle">User Testing Simulator Report</h2>
+  <div id="reportContent"></div>
+  <div class="button-row">
+    <button class="primary" id="printBtn">Print / Save as PDF</button>
+    <button class="secondary" id="restartBtn">Restart Simulator</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>User Testing Simulator · Creativity and Design Thinking</p>
+</footer>
+
+<script>
+const scenarios = [
+  {
+    title: "Campus Activities",
+    context: "Your team is exploring why commuter students do not participate in more campus activities.",
+    stakeholder: "Jordan, a 19-year-old commuter student",
+    goal: "Understand what influences Jordan's decision to attend or skip campus events.",
+    questions: [
+      {
+        text: "Why don't you attend more campus events?",
+        type: "Broad / potentially judgmental",
+        quality: "caution",
+        response: "I don't know. I'm just busy, I guess.",
+        feedback: "This question may make the user feel they need to defend their behavior. It also tends to produce a general answer rather than details about a real decision."
+      },
+      {
+        text: "Would you attend more events if there were better advertising?",
+        type: "Leading / solution-oriented",
+        quality: "caution",
+        response: "Maybe. I suppose better advertising could help.",
+        feedback: "This question introduces the proposed cause and solution. The user may agree without advertising actually being the main barrier."
+      },
+      {
+        text: "Tell me about the last time you considered attending a campus event.",
+        type: "Behavioral / experience-based",
+        quality: "good",
+        response: "There was a career event last month. I saw it on Instagram, but it started at 6:00. My last class ended at 2:30, and I didn't want to wait around for three hours.",
+        feedback: "This question anchors the conversation in a real event. It reveals a specific barrier—timing and the commuter schedule—that the team can investigate."
+      },
+      {
+        text: "Do you like campus events?",
+        type: "Closed yes/no",
+        quality: "caution",
+        response: "Yeah, some of them.",
+        feedback: "A yes/no question provides little evidence about behavior, barriers, or decision-making."
+      }
+    ],
+    best: 2
+  },
+  {
+    title: "Advising Check-In",
+    context: "Your team has created a new check-in process for academic advising.",
+    stakeholder: "Maya, a first-year student",
+    goal: "Learn whether students understand how to move through the new check-in process.",
+    questions: [
+      {
+        text: "Was the new check-in system easy to use?",
+        type: "Closed / evaluative",
+        quality: "caution",
+        response: "Mostly, yes.",
+        feedback: "This produces a general opinion but does not reveal where the user succeeded or struggled."
+      },
+      {
+        text: "What did you do after you entered the advising office?",
+        type: "Behavioral / process-focused",
+        quality: "good",
+        response: "I looked for a front desk, but there wasn't one. Then I saw the QR code sign and scanned it. I wasn't sure whether I was supposed to sit down after that or check in somewhere else too.",
+        feedback: "This reveals the actual sequence of behavior and identifies a point of uncertainty in the prototype."
+      },
+      {
+        text: "Don't you think the QR code makes check-in faster?",
+        type: "Leading",
+        quality: "caution",
+        response: "I guess it probably does.",
+        feedback: "The wording suggests the desired answer and makes it hard to know whether the user independently perceived the process as faster."
+      },
+      {
+        text: "Would you prefer an app instead?",
+        type: "Solution-oriented hypothetical",
+        quality: "caution",
+        response: "Maybe. I use apps for everything.",
+        feedback: "The response says little about whether an app would actually solve the usability problem."
+      }
+    ],
+    best: 1
+  },
+  {
+    title: "Reusable Bottle Prototype",
+    context: "Your team is testing a new reusable water bottle with an unusual carrying handle.",
+    stakeholder: "Carlos, a student who carries a bottle throughout the day",
+    goal: "Determine whether the handle is comfortable and practical during actual use.",
+    questions: [
+      {
+        text: "Do you like the handle?",
+        type: "Closed preference question",
+        quality: "caution",
+        response: "Yeah, it seems okay.",
+        feedback: "Preference alone does not tell you how the prototype performs in use."
+      },
+      {
+        text: "Carry the bottle around the room and show me how you would normally hold it. What do you notice?",
+        type: "Task-based / observational",
+        quality: "good",
+        response: "I keep switching hands because this edge presses into my fingers. I would probably hold the bottle itself instead of using the handle for long walks.",
+        feedback: "This combines observation with an open prompt. It produces direct evidence about comfort and actual behavior."
+      },
+      {
+        text: "Would a softer handle make this better?",
+        type: "Solution-leading",
+        quality: "caution",
+        response: "Probably, yes.",
+        feedback: "The question suggests the solution rather than first establishing the problem."
+      },
+      {
+        text: "How often do you drink water?",
+        type: "Background question",
+        quality: "caution",
+        response: "A lot. I refill my bottle a few times each day.",
+        feedback: "This provides useful context, but it does not directly test the handle."
+      }
+    ],
+    best: 1
+  },
+  {
+    title: "Peer Support Service",
+    context: "Your team is prototyping a peer-support conversation service for students.",
+    stakeholder: "Avery, a student trying the role-played service",
+    goal: "Learn whether the conversation feels comfortable, useful, and easy to navigate.",
+    questions: [
+      {
+        text: "What part of that conversation felt most comfortable or uncomfortable to you?",
+        type: "Open / experience-based",
+        quality: "good",
+        response: "The beginning felt awkward because I wasn't sure what I was supposed to talk about. Once the peer mentor asked me about one specific issue, it felt more natural.",
+        feedback: "This invites the user to identify both positive and negative parts of the experience without steering the answer."
+      },
+      {
+        text: "Did the peer mentor do a good job?",
+        type: "Evaluative / closed",
+        quality: "caution",
+        response: "Yeah, I thought they did fine.",
+        feedback: "The answer is too general to guide redesign."
+      },
+      {
+        text: "Would you use this service every week?",
+        type: "Hypothetical",
+        quality: "caution",
+        response: "Maybe, depending on what was going on.",
+        feedback: "Future intentions are often less reliable than evidence about the experience the user just had."
+      },
+      {
+        text: "The introduction was probably too long, right?",
+        type: "Leading",
+        quality: "caution",
+        response: "A little, I guess.",
+        feedback: "The question tells the user what to criticize and may distort the feedback."
+      }
+    ],
+    best: 0
+  },
+  {
+    title: "Food Pickup Process",
+    context: "Your team is testing a new café pickup process with separate shelves for mobile and in-person orders.",
+    stakeholder: "Taylor, a student participating in the simulation",
+    goal: "Identify confusion or bottlenecks in the pickup process.",
+    questions: [
+      {
+        text: "Walk me through what you were thinking from the moment your order was ready.",
+        type: "Think-aloud / behavioral",
+        quality: "good",
+        response: "I saw two shelves but didn't know which one was mine. I checked the screen, then walked to the wrong shelf first. The labels were too small to see from where I was standing.",
+        feedback: "This reveals both behavior and the reason behind it, giving the team specific evidence about signage and wayfinding."
+      },
+      {
+        text: "Were the shelf labels confusing?",
+        type: "Leading",
+        quality: "caution",
+        response: "A little.",
+        feedback: "The question may confirm the team's assumption, but it does not reveal the full experience."
+      },
+      {
+        text: "Did you get your food?",
+        type: "Closed outcome question",
+        quality: "caution",
+        response: "Yes.",
+        feedback: "The task was eventually completed, but this answer hides the confusion and wasted movement that happened along the way."
+      },
+      {
+        text: "Should we use bigger signs?",
+        type: "Solution-oriented",
+        quality: "caution",
+        response: "That might help.",
+        feedback: "Bigger signs may be a good idea, but the testing question should first establish what problem occurred."
+      }
+    ],
+    best: 0
+  },
+  {
+    title: "Student Project Dashboard",
+    context: "Your team is testing a dashboard that helps students track milestones for a semester-long project.",
+    stakeholder: "Riley, a student using the clickable prototype",
+    goal: "Find out whether students understand what to do next when they open the dashboard.",
+    questions: [
+      {
+        text: "What would you click next, and why?",
+        type: "Task-based / open",
+        quality: "good",
+        response: "I'd click 'Progress' because I assume that's where I can see what's due next. I'm not sure what 'Project Path' means.",
+        feedback: "This reveals the user's mental model and identifies language that may not be clear."
+      },
+      {
+        text: "Do you understand the dashboard?",
+        type: "Broad yes/no",
+        quality: "caution",
+        response: "Mostly.",
+        feedback: "This does not reveal which elements are clear or unclear."
+      },
+      {
+        text: "Isn't the progress bar helpful?",
+        type: "Leading",
+        quality: "caution",
+        response: "Yeah, it's nice.",
+        feedback: "The wording encourages agreement and does not test whether the progress bar actually supports the user's task."
+      },
+      {
+        text: "Would you like more colors and icons?",
+        type: "Feature-oriented hypothetical",
+        quality: "caution",
+        response: "Sure, that could look better.",
+        feedback: "This focuses on a possible enhancement instead of testing whether the current interface communicates the next action."
+      }
+    ],
+    best: 0
+  }
+];
+
+let current = 0;
+let attemptHistory = scenarios.map(() => []);
+let finalResponses = [];
+
+const intro = document.getElementById('intro');
+const simulator = document.getElementById('simulator');
+const reflection = document.getElementById('reflection');
+const report = document.getElementById('report');
+const startBtn = document.getElementById('startBtn');
+const questionForm = document.getElementById('questionForm');
+const questionChoices = document.getElementById('questionChoices');
+const reason = document.getElementById('reason');
+const userResponse = document.getElementById('userResponse');
+const feedback = document.getElementById('feedback');
+const tryAnotherBtn = document.getElementById('tryAnotherBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+function renderScenario(){
+  const s = scenarios[current];
+  document.getElementById('scenarioLabel').textContent = `Scenario ${current+1} of ${scenarios.length}`;
+  document.getElementById('scenarioTitle').textContent = s.title;
+  document.getElementById('scenarioContext').textContent = s.context;
+  document.getElementById('stakeholder').textContent = s.stakeholder;
+  document.getElementById('goal').textContent = s.goal;
+  document.getElementById('progress').max = scenarios.length;
+  document.getElementById('progress').value = current + 1;
+  document.getElementById('progressText').textContent = `${current+1} of ${scenarios.length} scenarios`;
+
+  questionChoices.innerHTML = "";
+  s.questions.forEach((q, i) => {
+    const label = document.createElement('label');
+    label.className = 'choice';
+    label.innerHTML = `<input type="radio" name="questionChoice" value="${i}"> ${q.text}`;
+    questionChoices.appendChild(label);
+  });
+
+  reason.value = "";
+  reason.disabled = false;
+  userResponse.className = "user-response hidden";
+  userResponse.innerHTML = "";
+  feedback.className = "feedback hidden";
+  feedback.innerHTML = "";
+  tryAnotherBtn.classList.add('hidden');
+  nextBtn.classList.add('hidden');
+
+  document.querySelectorAll('input[name="questionChoice"]').forEach(r => r.disabled = false);
+}
+
+startBtn.addEventListener('click', () => {
+  intro.classList.add('hidden');
+  simulator.classList.remove('hidden');
+  renderScenario();
+  document.getElementById('scenarioTitle').scrollIntoView({block:"start"});
+});
+
+questionForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const selected = document.querySelector('input[name="questionChoice"]:checked');
+
+  if(!selected){
+    feedback.className = "feedback caution";
+    feedback.textContent = "Choose a question before asking the user.";
+    feedback.classList.remove('hidden');
+    return;
+  }
+
+  const s = scenarios[current];
+  const selectedIndex = Number(selected.value);
+  const q = s.questions[selectedIndex];
+
+  const attempt = {
+    attemptNumber: attemptHistory[current].length + 1,
+    question: q.text,
+    type: q.type,
+    quality: q.quality,
+    response: q.response,
+    feedback: q.feedback,
+    reason: reason.value.trim(),
+    isBest: selectedIndex === s.best
+  };
+
+  attemptHistory[current].push(attempt);
+  finalResponses[current] = attempt;
+
+  userResponse.innerHTML = `
+    <h3>User Response</h3>
+    <p><strong>${s.stakeholder}:</strong> "${q.response}"</p>
+  `;
+  userResponse.classList.remove('hidden');
+
+  feedback.className = q.quality === "good" ? "feedback good" : "feedback caution";
+  feedback.innerHTML = `
+    <p><span class="question-type">Question type:</span> ${q.type}</p>
+    <p>${q.feedback}</p>
+    <p><strong>Testing principle:</strong> Ask questions that uncover behavior and experience before asking users to evaluate your solution.</p>
+  `;
+  feedback.classList.remove('hidden');
+
+  document.querySelectorAll('input[name="questionChoice"]').forEach(r => r.disabled = true);
+  reason.disabled = true;
+  tryAnotherBtn.classList.remove('hidden');
+  nextBtn.classList.remove('hidden');
+  tryAnotherBtn.focus();
+});
+
+tryAnotherBtn.addEventListener('click', () => {
+  document.querySelectorAll('input[name="questionChoice"]').forEach(r => {
+    r.disabled = false;
+    r.checked = false;
+  });
+  reason.value = "";
+  reason.disabled = false;
+  userResponse.className = "user-response hidden";
+  userResponse.innerHTML = "";
+  feedback.className = "feedback hidden";
+  feedback.innerHTML = "";
+  tryAnotherBtn.classList.add('hidden');
+  nextBtn.classList.add('hidden');
+
+  const first = document.querySelector('input[name="questionChoice"]');
+  if(first) first.focus();
+});
+
+nextBtn.addEventListener('click', () => {
+  current++;
+  if(current < scenarios.length){
+    renderScenario();
+    document.getElementById('scenarioTitle').scrollIntoView({block:"start"});
+  } else {
+    simulator.classList.add('hidden');
+    reflection.classList.remove('hidden');
+    document.getElementById('reflectionTitle').scrollIntoView({block:"start"});
+  }
+});
+
+document.getElementById('buildReportBtn').addEventListener('click', () => {
+  const r1 = document.getElementById('r1').value.trim();
+  const r2 = document.getElementById('r2').value.trim();
+  const r3 = document.getElementById('r3').value.trim();
+
+  const finalStrong = finalResponses.filter(r => r && r.isBest).length;
+  const totalAttempts = attemptHistory.reduce((sum, arr) => sum + arr.length, 0);
+
+  const cards = scenarios.map((s, i) => {
+    const attempts = attemptHistory[i] || [];
+    const final = finalResponses[i];
+
+    const attemptsHtml = attempts.length ? attempts.map(a => `
+      <div style="border-top:1px solid #cbd5e1;margin-top:.75rem;padding-top:.75rem;">
+        <p><strong>Attempt ${a.attemptNumber}</strong></p>
+        <p><strong>Question asked:</strong> ${a.question}</p>
+        <p><strong>Question type:</strong> ${a.type}</p>
+        <p><strong>User response:</strong> ${a.response}</p>
+        <p><strong>Your reasoning:</strong> ${a.reason || "No reasoning entered."}</p>
+        <p><strong>Feedback:</strong> ${a.feedback}</p>
+      </div>
+    `).join("") : "<p>No response recorded.</p>";
+
+    return `
+      <div class="summary-card">
+        <h3>Scenario ${i+1}: ${s.title}</h3>
+        <p><strong>Stakeholder:</strong> ${s.stakeholder}</p>
+        <p><strong>Testing goal:</strong> ${s.goal}</p>
+        <p><strong>Final question:</strong> ${final ? final.question : "No response recorded."}</p>
+        <p><strong>Total questions tried:</strong> ${attempts.length}</p>
+        <h4>Interview History</h4>
+        ${attemptsHtml}
+      </div>
+    `;
+  }).join("");
+
+  document.getElementById('reportContent').innerHTML = `
+    <p><strong>Final strong-question matches:</strong> ${finalStrong} of ${scenarios.length}</p>
+    <p><strong>Total questions tested:</strong> ${totalAttempts}</p>
+    <p class="muted">This is a practice lab, not a grading score. The report emphasizes how your questioning strategy changed as you explored different approaches.</p>
+
+    <h3>Scenario Results</h3>
+    <div class="summary-grid">${cards}</div>
+
+    <h3>Final Reflection</h3>
+    <p><strong>Questions that produced the most useful information:</strong><br>${r1 || "No response entered."}</p>
+    <p><strong>Risk of leading or hypothetical questions:</strong><br>${r2 || "No response entered."}</p>
+    <p><strong>Using feedback to revise:</strong><br>${r3 || "No response entered."}</p>
+
+    <h3>Key Takeaway</h3>
+    <p><strong>Good user testing is not about getting users to approve your idea.</strong> It is about discovering what they actually do, experience, understand, and struggle with so you can make better design decisions.</p>
+  `;
+
+  reflection.classList.add('hidden');
+  report.classList.remove('hidden');
+  document.getElementById('reportTitle').scrollIntoView({block:"start"});
+});
+
+document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+  current = 0;
+  attemptHistory = scenarios.map(() => []);
+  finalResponses = [];
+  document.getElementById('r1').value = "";
+  document.getElementById('r2').value = "";
+  document.getElementById('r3').value = "";
+  report.classList.add('hidden');
+  intro.classList.remove('hidden');
+  startBtn.focus();
+});
+</script>
+</body>
+</html>
