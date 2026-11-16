@@ -1,30 +1,45 @@
-# Design Thinking Learning Lab - Standalone simulations (revision 3)
+# Design Thinking Learning Lab — CLA 212
 
-Six independent, accessible-first teaching simulations. No institutional logo or name is used. The appearance uses a red-and-white palette, Georgia headings and Arial body text. Every HTML contains its own scripts, styles and fictional case data.
+Six **standalone** interactive HTML learning simulations. Each file embeds its own CSS, JavaScript, fictional scenario evidence, and tagged PDF exporter. The labs share the same red/white color and Georgia/Arial typography without institutional logo or institutional branding.
 
-## Individual labs
+## Open the labs
 
-1. `01_Interview_Simulator.html` - Interviewing and empathy; expanded branching conversations.
-2. `02_Problem_Framing.html` - Distinguish observation from assumption; reframe a problem.
-3. `03_Idea_Generation.html` - Creative techniques and response to constraints.
-4. `04_Idea_Selection.html` - Tradeoffs, evidence and practical choice.
-5. `05_Rapid_Prototyping.html` - Create and preview a service journey.
-6. `06_Test_and_Iterate.html` - Simulated testing, revision and repeated testing.
+1. [Interview Simulator](01_Interview_Simulator.html) — Empathy: practice asking open, behavioral interview questions and follow-ups.
+2. [Problem Framing](02_Problem_Framing.html) — Define: separate evidence from assumptions, challenge an explanation, and reframe the problem.
+3. [Idea Generation](03_Idea_Generation.html) — Ideate: explore reverse thinking, analogy, and SCAMPER; build an idea bank.
+4. [Idea Selection](04_Idea_Selection.html) — Evaluate: score alternatives, consider tradeoffs, and select what to prototype.
+5. [Rapid Prototyping](05_Rapid_Prototyping.html) — Prototype: three-step guide to build and preview a service journey.
+6. [Test & Iterate](06_Test_and_Iterate.html) — Test: plan a test, interpret a simulated observation, revise the prototype directly, and retest.
 
-## Case continuity and independence
+## Cases and sequence
 
-Each lab contains both Jordan (commuter student and campus events) and Elena (online-order pickup at Riverbend Home & Garden). Students can do either or both cases, in any lab, without prior completion. Each lab loads its own scenario evidence and starter material; no JSON exports or imports are required or offered. Each case saves separately in local browser storage where the browser permits, and there is a Start over option. Students can download a standalone HTML learning artifact or text interview notes to submit or keep as a reference; this is not a required transfer process.
+Every lab includes the same two independently selectable fictional cases:
 
-## Simulated response pacing
+- **Jordan / Campus events:** A commuter student evaluates whether staying for a campus event is worthwhile, with concerns about schedule gaps, what happens on arrival, and navigating unfamiliar activities.
+- **Elena / Riverbend customer pickup:** A first-time customer navigates online-order pickup, including where to go, acknowledgment, and order handoff.
 
-Interviews and the additional stakeholder exercises wait approximately 2.3-2.8 seconds before displaying a fictional response. Each pause has a Show response now control. In Test & Iterate, simulated task feedback also has a brief pause. This pacing is to reflect the conversational nature of research and testing; it is not a real human or an AI live call. Every interaction runs offline and uses authored fictional case branches.
+Students can use one case or both. Each lab supplies its own **baseline findings**. No JSON upload, download, or progression between files is required. Work on either case is saved separately in local browser storage when permitted by the browser.
 
-## Canvas embedding
+## Guidance and question flow
 
-Files are hosted at `https://bluehattom.github.io/CLA212/design-thinking-learning-labs/` when GitHub Pages has deployed the main branch. Link directly to each HTML file in the appropriate Canvas module or use an iframe with an accessible title. Always offer a direct-open fallback, especially for mobile devices or when browser/Canvas policies block downloads or local storage in an iframe. The simulations make no network calls. Validate deployment in Canvas Student View. Local browser storage may be partitioned in embeds.
+A **Review concepts and vocabulary** disclosure appears on every start screen and inside each case. Instructions include relevant examples, definitions, and learning steps.
 
-## Accessibility
+The Interview Simulator retains rich branching and a visible 2–3 second pause before fictional respondents answer. Interview coaching is separated from the conversation transcript. Other labs include an **optional**, collapsed stakeholder follow-up section, rather than requiring every student to conduct a new interview at each design stage.
 
-See [Accessibility_Report.md](Accessibility_Report.md) for actual checks and outstanding acceptance tests. These are not declared formally WCAG-conformant without human assistive-technology verification.
+**Idea bank rule:** Each idea must contain **15–600 characters**. A bank holds at most 15 ideas; students are encouraged to contribute at least three ideas spanning two different techniques.
 
-**Disclosure:** These cases and simulated responses are fictional and were developed with the help of ChatGPT. The data and reactions are for teaching, not real user research or validation.
+## Learning artifacts
+
+Choose **Download accessible PDF** to create a tagged, text-based PDF directly in the browser. It includes heading/paragraph tags, document language, selectable text, and structured reading order. Every lab includes an HTML alternative; the Interview Simulator also offers TXT field notes. The PDF exporter is designed for English/Western Latin text. For other scripts or when assistive technology compatibility is uncertain, use the semantic HTML alternative.
+
+**Important:** Tagged output is not automatically a PDF/UA or WCAG conformance certification. An assistive technology acceptance test is recommended before formal deployment. See [Accessibility Report](Accessibility_Report.md).
+
+## Canvas deployment
+
+The files are self-contained; no external scripts, API keys, servers, or student logins are required. The intended base GitHub Pages URL is:
+
+`https://bluehattom.github.io/CLA212/design-thinking-learning-labs/`
+
+Paste each file's direct HTTPS URL into a Canvas module or an approved iframe. For iframe embedding, use `width="100%"` and a descriptive `title`; always include an independent direct-open link for mobile and assistive technology users. Verify downloads and PDF usability in Canvas Student View.
+
+Each page includes the footer disclosure: **Developed with the help of AI (including ChatGPT). All cases and simulated responses are fictional.**

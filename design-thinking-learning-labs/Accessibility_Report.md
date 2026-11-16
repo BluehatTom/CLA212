@@ -1,34 +1,47 @@
-# Accessibility report - Design Thinking Learning Lab
+# Design Thinking Learning Lab — Accessibility QA Report
 
-**Review date:** November 11, 2026
+**Revision:** 4 · **Date:** November 16, 2026 · **Target:** WCAG 2.2 AA (not an audit certification)
 
-**Files:** Six standalone HTML simulations, revised version 3.
+## Scope
 
-**Design target:** WCAG 2.2 AA. This report documents checks; it is **not a WCAG conformance certification**.
+All six standalone HTML learning labs, including the Jordan/campus-events and Elena/customer-pickup scenarios, updated concept/vocabulary guidance, Prototyping/Test navigation, optional stakeholder dialogues, and downloaded artifacts.
 
-## Automated and functional checks completed
+## Verified in this revision
 
-- 12 case-by-lab browser click-throughs: Jordan and Elena across all six apps. Every test completed without a JavaScript page error.
-- Interview question followed by visible thinking indicator, immediate-reveal alternative and subsequent response; additional topic choice and reflection route verified.
-- The supplementary question-and-follow-up exercise tested in both scenarios for each of the five later apps.
-- Test & Iterate: selected method, visible simulated-observation delay, immediate reveal, and results displayed. A starter prototype is provided independently of earlier files.
-- 18 responsive structural checks on home and in-lab screens at 1280, 768 and 320 CSS pixels. No horizontal document overflow, duplicate IDs, unlabeled buttons or unlabeled form controls detected on the checked views.
-- Accessible `lang=en`, one main landmark and level-one heading per view, skip-to-content link, and live status region verified on tested views.
-- Keyboard navigation: skip link receives initial Tab focus, the Interview Simulator question can be activated with Enter, focus outlines visible and response revealed by keyboard.
-- Contrast ratios calculated from representative declared palette values: white on red #C41230 = 6.04:1; red on white = 6.04:1; dark red on white = 8.56:1; body text on white = 16.10:1; muted text on white = 7.62:1; green on pale green = 6.93:1. These exceed 4.5:1 for the representative normal-text combinations tested.
-- A reduced-motion CSS preference is supported; typing dots become static under reduced motion. The same information is available as text, and the wait may always be skipped.
-- Prototype step reordering has explicit Move up and Move down buttons; drag-and-drop is not required.
-- Both scenarios and all labs can start independently without JSON import or export.
+| Area | Result | Test performed |
+|---|---|---|
+| Responsive reflow | **Pass in tested views** | Chromium at 320, 768, and 1280 CSS pixels; two cases in all six labs; no document-level horizontal overflow |
+| Duplicate HTML IDs | **Pass in tested views** | Inspected rendered home and case screens at three viewport widths |
+| Interactive flows | **Pass in tested views** | Start, scenario selection, question/reveal, Prototyping steps 1→2→3, walkthrough, Test and Iterate initial round→observation→inline revision→second round |
+| Optional stakeholder dialogue | **Pass in tested views** | Open, ask and reveal, and verify the optional panel stays open afterward |
+| Interview coach separation | **Pass in tested views** | Coaching is outside the simulated conversation DOM and visibly labeled as coaching |
+| Idea-bank rules | **Present and verified** | Minimum 15 characters, maximum 600, up to 15 entries; on-screen instructions and input validation |
+| Concept and vocabulary panels | **Present and verified** | Expanded on home screens and included in active-case views; native accessible `details`/`summary` |
+| Focus/keyboard controls | **Functional in tested paths** | Native buttons, form fields, tabindex-reachable page headings, button-operated prototype reordering, no drag-only requirement |
+| PDF download and extraction | **Pass in tested outputs** | All six apps downloaded text PDFs; PDFs parsed by pypdf with selectable/extractable text; PDFs reported as tagged by `pdfinfo` |
+| PDF document structure | **Pass structural checks** | `/StructTreeRoot`, `/ParentTree`, marked content, heading and paragraph roles, `/Lang (en-US)`, `/MarkInfo /Marked true` |
+| Multi-page PDF | **Pass** | Generated a seven-page, 110-paragraph test PDF; all paragraphs extracted, no page losses |
+| Script execution | **Pass in tested paths** | No uncaught browser JavaScript errors during six-app click-through tests |
 
-## Remaining acceptance tests
+## Accessibility design choices
 
-- Manual NVDA/Chrome or Edge and VoiceOver/Safari end-to-end tests, including every expanded branch and changing keyboard focus after updates.
-- Full automated axe-core or equivalent audit with manual criterion-by-criterion review, including dynamic states beyond those sampled.
-- 200% and 400% zoom, mobile touch assistive technology, and actual forced-colors system setting.
-- Firefox and Safari browser verification and downloads through the deployed GitHub Pages and Canvas iframe contexts.
-- Check local storage persistence and resume behavior in Canvas's actual embedded origin; browser partitioning may change it.
-- Verify long transcripts, feedback sections and educational comprehension with students using a range of access needs.
+- Native headings, labels, buttons, input controls, disclosure widgets, and visible focus outlines
+- Animated response pauses include a direct **Show response now** control; typing is not necessary for these controls
+- No game-critical dragging; prototype step order adjusted with buttons
+- The coach feedback is separated from the interview transcript, reducing speaker attribution confusion
+- Each file is self-contained; separate cases do not depend on browser-to-browser file transfers
+- Tagged PDF learning artifact includes headings, paragraphs, metadata and a logical text order; semantic HTML export is offered as an alternative
 
-## Recommendations for Canvas
+## Known limits and required manual validation
 
-Provide a descriptive title on each iframe and a direct-open HTML link. Do not depend on iframe height resizing across origins. Prefer a new-tab option for phone-sized screens and file downloads. Test with a student-role account in the course before deployment.
+**No claim of full WCAG 2.2 AA, PDF/UA, or institutional accessibility certification is made.** These steps remain to be tested with assistive technologies and in the final course environment:
+
+1. Complete real NVDA/JAWS + Chrome/Edge and VoiceOver + Safari screen-reader acceptance tests of all major workflows, including wait states and download announcements.
+2. Test browser zoom at 200% and 400%, Windows forced-colors mode, keyboard-only use from start to completion, and mobile assistive technology.
+3. Test PDF tags, hierarchy and reading order using institutional PDF accessibility tools and assistive technologies; verify text alternatives where relevant. The exporter supports English/Western Latin characters and may simplify other scripts. Offer semantic HTML instead when characters do not preserve correctly.
+4. Test Canvas iframe restrictions and direct-open links on the institution’s actual Canvas installation; verify PDF download/open/submission permissions in Student View.
+5. Review all instructional prose and case responses with students for cognitive accessibility; avoid treating fictional outcomes as empirical validation.
+
+## Conclusion
+
+The revision resolves the observed usability problems in the tested flows and introduces tagged, selectable-text PDF export with HTML fallback. **It is ready for instructor pilot testing, but not yet for an accessibility-conformance claim.**

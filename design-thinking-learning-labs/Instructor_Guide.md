@@ -1,38 +1,53 @@
-# Instructor guide - Design Thinking Learning Lab
+# Instructor Guide — Design Thinking Learning Lab
 
-## Purpose
+## Course use
 
-Six interactive, independent practice labs on design thinking: Empathize, Define, Ideate, Evaluate, Prototype, and Test & Iterate. They share the same typeface/color vocabulary and two fictional cases; the code is not branded with any institution.
+These are formative, standalone simulations that allow students to practice one design-thinking capability at a time. The consistent visual design and shared cases help transfer concepts without requiring file exchange or completion in a particular order. They are not assessments of real students or real stakeholder research.
 
-Students can study the campus-events case (Jordan) or the customer pickup case (Elena), or explore both. No lab needs another lab's data, file or completion. Each opens with its own baseline evidence. Students can download an HTML learning artifact and, for interviews, a TXT field note file if requested for an assignment.
+## Scenario continuity
 
-## Instructional progression
+**Jordan: Campus events.** A commuter student knows about some events but has experienced inconvenient gaps between class and start time and uncertainty about arriving alone. Do not assume advertising is the primary barrier.
 
-| Lab | Skill to observe | What makes the practice meaningful |
-| --- | --- | --- |
-| 1. Interview Simulator | Ask behavioral, neutral and comparative questions | Branching conversations, multiple routes, weak and strong prompts, unexpected evidence; 2.3-2.8 second response pause |
-| 2. Problem Framing | Separate facts, assumptions and questions | Classify evidence, compare alternative frames, respond to contradictory findings, question stakeholder |
-| 3. Idea Generation | Create multiple possible solutions | Reverse thinking, analogies and SCAMPER, then adapt to an external constraint |
-| 4. Idea Selection | Evaluate evidence and tradeoffs | Score needs, feasibility, accessibility and testability; discuss limitations of scoring |
-| 5. Rapid Prototyping | Test a low-fidelity service sequence | Edit touchpoints, reposition with buttons, preview sequence and identify the learning goal |
-| 6. Test & Iterate | Interpret simulated observations, change and retest | Choose a testing method, avoid leading users, improve the independently provided starter prototype |
+**Elena: Riverbend customer pickup.** A first-time customer has trouble determining where to go, whether staff know she is present, and whether a completed order is actually complete. Do not assume the only problem is slow service.
 
-## Core case details
+Each lab provides fictional baseline evidence. Students may choose either case, both cases, or change cases without prerequisite work. The lab keeps independent local progress per case when storage is available.
 
-Jordan is a commuter student who sometimes declines campus events even when interested. Timing gaps, unclear arrival instructions, information consistency, peers and work/transport plans can matter; a convenient event may still not be appealing. Avoid reducing attendance to a single explanation.
+## Learning objectives and possible placement
 
-Elena is a first-time pickup customer at Riverbend Home & Garden. Parking and fulfillment speed may be fine even when wayfinding, queue choice, check-in status and handoff confirmation are ambiguous. Do not mistake uncertainty for an order being wrong.
+| Lab | Design-thinking phase | Learning objective | Suggested evidence for reflection |
+|---|---|---|---|
+| Interview Simulator | Empathize | Ask open behavioral questions, follow new evidence, identify weak or leading questions | Interview path, specific finding, remaining uncertainty |
+| Problem Framing | Define | Separate observations from unverified explanations and write a human-centered How Might We question | Preliminary and revised frame, supporting and complicating evidence |
+| Idea Generation | Ideate | Generate alternatives using at least two techniques, then adapt to a constraint | Three ideas, technique choices, revised idea |
+| Idea Selection | Converge | Evaluate options consistently and discuss tradeoffs | Selection rationale, rated criteria, testable assumption |
+| Rapid Prototyping | Prototype | Build an ordered service journey with concrete user-facing touchpoints | Prototype steps, needs addressed, test question |
+| Test & Iterate | Test | Distinguish observation from explanation, revise and retest | First observation, changed touchpoint, revised interpretation |
 
-## Suggested use
+## Learning support
 
-20-40 minutes per lab plus discussion. Treat the stakeholder exchanges as deliberate, scripted simulations, not live generative AI or real participant testimony. Ask students to explain why their own reasoning changed, with a supporting finding and a counterexample. Completion indicators are practice aids, not automatic grades.
+Every start screen and case includes an optional **Review concepts and vocabulary** panel. Encourage students to review it before beginning, especially when design-thinking terminology is new.
 
-A short reflective checkpoint might require (1) an evidence excerpt, (2) an interpretation that is not treated as fact, (3) a revised idea or prototype decision and (4) a question for future real-user research.
+The Interview Simulator has detailed interview branches and a response pause to encourage consideration of listening and follow-up. In the other five labs, follow-up interviews are optional because they can distract from the targeted learning outcome.
 
-## Accessibility and deployment
+Prototyping and Test & Iterate now have visible **three-step navigation**. Moving between steps is not gated. Completion checks are separate and explain missing work rather than silently blocking forward movement.
 
-See Accessibility_Report.md. The structural and keyboard checks passed for tested views, but formal screen-reader and Canvas acceptance testing is pending. Host each HTML separately; Canvas can use a standalone link or an iframe with a direct-link fallback. Students should not be asked to transfer JSON files between modules.
+**Idea bank validation:** A single idea is accepted if it has at least 15 characters and no more than 600 characters; the bank allows up to 15 ideas per case. The lab asks students to generate at least three and practice two methods.
 
-## Required disclosure
+## Student artifacts and PDF accessibility
 
-These cases and simulated responses are fictional and were developed with the help of ChatGPT. Simulated results cannot validate a design for actual users.
+Students can download a **tagged PDF** directly from any lab, or download semantic HTML. Tagged PDFs contain selectable text, structure-tree tags for headings and paragraphs, language metadata, and an ordered page reading sequence. They are intended primarily for English text. No external service receives exported content.
+
+Do not treat the generated PDF as officially PDF/UA-certified. Conduct screen-reader acceptance checks with your institution’s accessibility staff before requiring it as the only acceptable format. Always accept the HTML alternative when necessary for accessibility or international characters.
+
+## Optional formative rubric (0–3 per dimension)
+
+1. **Evidence quality:** Does the student distinguish observed behavior from untested explanation?
+2. **Human-centered reasoning:** Is the decision grounded in specific stakeholder needs and counterevidence?
+3. **Intentional creativity:** Does the student offer distinct, feasible directions rather than a single polished idea?
+4. **Iteration and reflection:** Does the student use findings to revise and identify a meaningful next real-world test?
+
+A good simulated outcome is **not** proof of a good real-world outcome. The simulations model decision-making practice, not the responses of actual human participants.
+
+## Deployment checklist
+
+Test each file using the direct GitHub Pages link and within Canvas Student View. Verify that (1) the iframe is keyboard reachable, (2) a direct-open link is provided, (3) the case can be reset, (4) PDFs download from the Canvas context, and (5) the resulting PDF/HTML artifact can be submitted to Canvas.
