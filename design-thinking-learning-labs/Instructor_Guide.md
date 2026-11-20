@@ -17,9 +17,9 @@ Six standalone formative simulations practice human-centered design from empathy
 
 ## Exporting and submitting the PDF
 
-Students enter separate first and last names. Their names are printed in the report and used to suggest `First Last Lab N.pdf`. They may rename that file before downloading. The **Download PDF of all work** button is near the beginning of every active case, including the ongoing interview. The PDF also captures a case's decision history where available. No manual completion marking is needed; the review button provides formative feedback independently.
+Students enter separate first and last names. Their names are printed in the report and used to suggest `First Last Lab N.pdf`. They may rename that file before downloading. The **Download PDF of all work** button and editable filename field are located together at the bottom of every active case, including the ongoing interview. The PDF also captures a case's decision history where available. No manual completion marking is needed; the review button provides formative feedback independently.
 
-In the interview, a collapsed learning-coach panel is **below** the conversation. The questions/answers are not mixed with coaching text; the PDF prints coaching in a separate section. The five later labs maintain a case-specific history of meaningful actions and recorded input edits, alongside the student’s saved answers and simulated feedback.
+In the interview, students select **Open Interview Coach** directly beneath the conversation to reveal guidance in place. The same button closes the guidance. The questions/answers are not mixed with coaching text; the PDF prints coaching in a separate section. The five later labs maintain a case-specific history of meaningful actions and recorded input edits, alongside the student’s saved answers and simulated feedback.
 
 ## Teaching and assessment
 

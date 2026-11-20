@@ -17,13 +17,13 @@ Each file stands alone. Both fictional cases are available in every lab: **Jorda
 
 At the beginning of any lab, students enter their **First name** and **Last name**. These fields also appear when they work in a case. The student's name is printed inside the PDF and prepopulates its suggested filename — for example, `Bob Smith Lab 1.pdf`. The filename field can be edited, and the `.pdf` suffix is added automatically. The same first/last name is reused across these pages if browser storage is available.
 
-**Download PDF of all work** appears near the beginning of the active case, including during a live interview, with a second download control at the bottom of most labs. The PDF is the only submitted learning-artifact format offered by the interface. The Interview Simulator exports the complete question-and-answer path, evidence, field notes, coach guidance (as a separate section), and reflection. Labs 2–6 export the baseline evidence, student inputs and decisions, stakeholder dialogue, scored criteria or prototype/testing rounds, review checkpoints, and the available decision history for that case. Downloads can be made before or after revising an idea. No completion-marking action is used.
+**Download PDF of all work** appears once, at the bottom of each active lab. The editable PDF filename field is in the same bottom section, while first and last name fields remain near the top. This includes the Interview Simulator, where students can export their recorded work without ending the interview. The PDF is the only submitted learning-artifact format offered by the interface. The Interview Simulator exports the complete question-and-answer path, evidence, field notes, coach guidance (as a separate section), and reflection. Labs 2–6 export the baseline evidence, student inputs and decisions, stakeholder dialogue, scored criteria or prototype/testing rounds, review checkpoints, and the available decision history for that case. Downloads can be made before or after revising an idea. No completion-marking action is used.
 
 The PDF exporter runs entirely in the browser, generates tagged PDFs with selectable English/Western-Latin text and heading/paragraph structure, and does not transmit student responses to a server. Tagged output alone is not a PDF/UA accessibility certification. See [Accessibility Report](Accessibility_Report.md).
 
 ## Instructional design
 
-- Interview coaching is in a collapsed **Learning coach** area below the conversation. It does not float over or interrupt the simulated dialogue.
+- The **Open Interview Coach** button is immediately below the question-and-answer transcript. It reveals a separate inline guidance panel and changes to **Close Interview Coach**. The guidance does not overlay or interrupt the simulated dialogue.
 - The interview offers richer question branches and a 2–3-second pause with an immediate-reveal control.
 - Each lab includes a **Review concepts and vocabulary** disclosure.
 - Prototyping and Test & Iterate use explicit step navigation.
