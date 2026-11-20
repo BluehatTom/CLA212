@@ -1,53 +1,32 @@
 # Instructor Guide — Design Thinking Learning Lab
 
-## Course use
+## Purpose and scenarios
 
-These are formative, standalone simulations that allow students to practice one design-thinking capability at a time. The consistent visual design and shared cases help transfer concepts without requiring file exchange or completion in a particular order. They are not assessments of real students or real stakeholder research.
+Six standalone formative simulations practice human-centered design from empathy to testing. **Jordan** is a commuter student considering campus events; **Elena** is a customer navigating an online-order pickup at Riverbend. The same fictional cases recur across the labs, but each lab supplies its own starting evidence. Students may work through either or both cases in any lab.
 
-## Scenario continuity
+## Learning goals
 
-**Jordan: Campus events.** A commuter student knows about some events but has experienced inconvenient gaps between class and start time and uncertainty about arriving alone. Do not assume advertising is the primary barrier.
+| Lab | Learning focus | Artifact evidence |
+|---|---|---|
+| Interview Simulator | Open and behavioral questions, meaningful probing, recognizing weak evidence | Full question/answer path, evidence, notes and reflection |
+| Problem Framing | Evidence vs. assumptions, counterexamples, How Might We reframing | Classifications, supporting/complicating evidence, initial and revised statement |
+| Idea Generation | Divergent thinking, SCAMPER/reverse/analogy, constraints | Full idea bank, techniques, constraint adaptation |
+| Idea Selection | Deliberate evaluation, accessibility, feasibility and tradeoffs | Candidate ideas, complete ratings, selected concept and justification |
+| Rapid Prototyping | Low-fidelity service journey, meaningful touchpoints and test questions | Goal, test question, all current ordered touchpoints and needs addressed |
+| Test & Iterate | Testing method choice, interpreting observations, revisions, second round | Prototype snapshots, all simulated test rounds, interpretation and next study |
 
-**Elena: Riverbend customer pickup.** A first-time customer has trouble determining where to go, whether staff know she is present, and whether a completed order is actually complete. Do not assume the only problem is slow service.
+## Exporting and submitting the PDF
 
-Each lab provides fictional baseline evidence. Students may choose either case, both cases, or change cases without prerequisite work. The lab keeps independent local progress per case when storage is available.
+Students enter separate first and last names. Their names are printed in the report and used to suggest `First Last Lab N.pdf`. They may rename that file before downloading. The **Download PDF of all work** button is near the beginning of every active case, including the ongoing interview. The PDF also captures a case's decision history where available. No manual completion marking is needed; the review button provides formative feedback independently.
 
-## Learning objectives and possible placement
+In the interview, a collapsed learning-coach panel is **below** the conversation. The questions/answers are not mixed with coaching text; the PDF prints coaching in a separate section. The five later labs maintain a case-specific history of meaningful actions and recorded input edits, alongside the student’s saved answers and simulated feedback.
 
-| Lab | Design-thinking phase | Learning objective | Suggested evidence for reflection |
-|---|---|---|---|
-| Interview Simulator | Empathize | Ask open behavioral questions, follow new evidence, identify weak or leading questions | Interview path, specific finding, remaining uncertainty |
-| Problem Framing | Define | Separate observations from unverified explanations and write a human-centered How Might We question | Preliminary and revised frame, supporting and complicating evidence |
-| Idea Generation | Ideate | Generate alternatives using at least two techniques, then adapt to a constraint | Three ideas, technique choices, revised idea |
-| Idea Selection | Converge | Evaluate options consistently and discuss tradeoffs | Selection rationale, rated criteria, testable assumption |
-| Rapid Prototyping | Prototype | Build an ordered service journey with concrete user-facing touchpoints | Prototype steps, needs addressed, test question |
-| Test & Iterate | Test | Distinguish observation from explanation, revise and retest | First observation, changed touchpoint, revised interpretation |
+## Teaching and assessment
 
-## Learning support
+Encourage students to use **Review concepts and vocabulary** when they begin. A typical simulation can take about 20–40 minutes depending on how thoroughly students explore choices and revise. The simulated feedback is practice data, not actual stakeholder research. A rubric can prioritize evidence quality, human-centered reasoning, creativity and iteration rather than reward a predetermined answer.
 
-Every start screen and case includes an optional **Review concepts and vocabulary** panel. Encourage students to review it before beginning, especially when design-thinking terminology is new.
+In the Idea Generation lab, students must enter at least 15 characters per saved idea (up to 600) and can keep up to 15 ideas. During testing, students should distinguish expressed preferences from observed behaviors and plan how to validate results with real users.
 
-The Interview Simulator has detailed interview branches and a response pause to encourage consideration of listening and follow-up. In the other five labs, follow-up interviews are optional because they can distract from the targeted learning outcome.
+## Canvas and accessibility
 
-Prototyping and Test & Iterate now have visible **three-step navigation**. Moving between steps is not gated. Completion checks are separate and explain missing work rather than silently blocking forward movement.
-
-**Idea bank validation:** A single idea is accepted if it has at least 15 characters and no more than 600 characters; the bank allows up to 15 ideas per case. The lab asks students to generate at least three and practice two methods.
-
-## Student artifacts and PDF accessibility
-
-Students can download a **tagged PDF** directly from any lab, or download semantic HTML. Tagged PDFs contain selectable text, structure-tree tags for headings and paragraphs, language metadata, and an ordered page reading sequence. They are intended primarily for English text. No external service receives exported content.
-
-Do not treat the generated PDF as officially PDF/UA-certified. Conduct screen-reader acceptance checks with your institution’s accessibility staff before requiring it as the only acceptable format. Always accept the HTML alternative when necessary for accessibility or international characters.
-
-## Optional formative rubric (0–3 per dimension)
-
-1. **Evidence quality:** Does the student distinguish observed behavior from untested explanation?
-2. **Human-centered reasoning:** Is the decision grounded in specific stakeholder needs and counterevidence?
-3. **Intentional creativity:** Does the student offer distinct, feasible directions rather than a single polished idea?
-4. **Iteration and reflection:** Does the student use findings to revise and identify a meaningful next real-world test?
-
-A good simulated outcome is **not** proof of a good real-world outcome. The simulations model decision-making practice, not the responses of actual human participants.
-
-## Deployment checklist
-
-Test each file using the direct GitHub Pages link and within Canvas Student View. Verify that (1) the iframe is keyboard reachable, (2) a direct-open link is provided, (3) the case can be reset, (4) PDFs download from the Canvas context, and (5) the resulting PDF/HTML artifact can be submitted to Canvas.
+Use the direct GitHub Pages URL for each lab, with an accessible iframe title and an independent direct-open alternative if embedding. Validate student PDF downloads in Canvas Student View. The exporter creates tagged, text-based PDFs, but a manual PDF/UA and screen-reader check is still needed before an institutional accessibility-conformance claim. See [Accessibility Report](Accessibility_Report.md).

@@ -1,45 +1,37 @@
 # Design Thinking Learning Lab — CLA 212
 
-Six **standalone** interactive HTML learning simulations. Each file embeds its own CSS, JavaScript, fictional scenario evidence, and tagged PDF exporter. The labs share the same red/white color and Georgia/Arial typography without institutional logo or institutional branding.
+Six standalone, responsive HTML simulations. Each includes its own styling, teaching cases, practice interactions, and a built-in PDF exporter. The visual system uses red, white and neutral colors with Georgia/Arial typography and no institutional logo.
 
-## Open the labs
+## Launch an individual lab
 
-1. [Interview Simulator](01_Interview_Simulator.html) — Empathy: practice asking open, behavioral interview questions and follow-ups.
-2. [Problem Framing](02_Problem_Framing.html) — Define: separate evidence from assumptions, challenge an explanation, and reframe the problem.
-3. [Idea Generation](03_Idea_Generation.html) — Ideate: explore reverse thinking, analogy, and SCAMPER; build an idea bank.
-4. [Idea Selection](04_Idea_Selection.html) — Evaluate: score alternatives, consider tradeoffs, and select what to prototype.
-5. [Rapid Prototyping](05_Rapid_Prototyping.html) — Prototype: three-step guide to build and preview a service journey.
-6. [Test & Iterate](06_Test_and_Iterate.html) — Test: plan a test, interpret a simulated observation, revise the prototype directly, and retest.
+1. [Interview Simulator](01_Interview_Simulator.html) — Empathize: practice experience-based interviewing and follow-up routes.
+2. [Problem Framing](02_Problem_Framing.html) — Define: sort evidence, challenge assumptions and revise the framing.
+3. [Idea Generation](03_Idea_Generation.html) — Ideate: use creative methods and respond to constraints.
+4. [Idea Selection](04_Idea_Selection.html) — Evaluate: score alternatives and explain tradeoffs.
+5. [Rapid Prototyping](05_Rapid_Prototyping.html) — Prototype: construct and preview a service journey.
+6. [Test & Iterate](06_Test_and_Iterate.html) — Test: run simulated feedback rounds, revise and compare outcomes.
 
-## Cases and sequence
+Each file stands alone. Both fictional cases are available in every lab: **Jordan (campus events)** and **Elena (Riverbend customer pickup)**. Students can explore one or both, and each new lab begins with its own baseline evidence. Work is saved separately per case when browser storage permits.
 
-Every lab includes the same two independently selectable fictional cases:
+## Student identity and downloadable artifacts
 
-- **Jordan / Campus events:** A commuter student evaluates whether staying for a campus event is worthwhile, with concerns about schedule gaps, what happens on arrival, and navigating unfamiliar activities.
-- **Elena / Riverbend customer pickup:** A first-time customer navigates online-order pickup, including where to go, acknowledgment, and order handoff.
+At the beginning of any lab, students enter their **First name** and **Last name**. These fields also appear when they work in a case. The student's name is printed inside the PDF and prepopulates its suggested filename — for example, `Bob Smith Lab 1.pdf`. The filename field can be edited, and the `.pdf` suffix is added automatically. The same first/last name is reused across these pages if browser storage is available.
 
-Students can use one case or both. Each lab supplies its own **baseline findings**. No JSON upload, download, or progression between files is required. Work on either case is saved separately in local browser storage when permitted by the browser.
+**Download PDF of all work** appears near the beginning of the active case, including during a live interview, with a second download control at the bottom of most labs. The PDF is the only submitted learning-artifact format offered by the interface. The Interview Simulator exports the complete question-and-answer path, evidence, field notes, coach guidance (as a separate section), and reflection. Labs 2–6 export the baseline evidence, student inputs and decisions, stakeholder dialogue, scored criteria or prototype/testing rounds, review checkpoints, and the available decision history for that case. Downloads can be made before or after revising an idea. No completion-marking action is used.
 
-## Guidance and question flow
+The PDF exporter runs entirely in the browser, generates tagged PDFs with selectable English/Western-Latin text and heading/paragraph structure, and does not transmit student responses to a server. Tagged output alone is not a PDF/UA accessibility certification. See [Accessibility Report](Accessibility_Report.md).
 
-A **Review concepts and vocabulary** disclosure appears on every start screen and inside each case. Instructions include relevant examples, definitions, and learning steps.
+## Instructional design
 
-The Interview Simulator retains rich branching and a visible 2–3 second pause before fictional respondents answer. Interview coaching is separated from the conversation transcript. Other labs include an **optional**, collapsed stakeholder follow-up section, rather than requiring every student to conduct a new interview at each design stage.
-
-**Idea bank rule:** Each idea must contain **15–600 characters**. A bank holds at most 15 ideas; students are encouraged to contribute at least three ideas spanning two different techniques.
-
-## Learning artifacts
-
-Choose **Download accessible PDF** to create a tagged, text-based PDF directly in the browser. It includes heading/paragraph tags, document language, selectable text, and structured reading order. Every lab includes an HTML alternative; the Interview Simulator also offers TXT field notes. The PDF exporter is designed for English/Western Latin text. For other scripts or when assistive technology compatibility is uncertain, use the semantic HTML alternative.
-
-**Important:** Tagged output is not automatically a PDF/UA or WCAG conformance certification. An assistive technology acceptance test is recommended before formal deployment. See [Accessibility Report](Accessibility_Report.md).
+- Interview coaching is in a collapsed **Learning coach** area below the conversation. It does not float over or interrupt the simulated dialogue.
+- The interview offers richer question branches and a 2–3-second pause with an immediate-reveal control.
+- Each lab includes a **Review concepts and vocabulary** disclosure.
+- Prototyping and Test & Iterate use explicit step navigation.
+- Each idea bank entry must contain 15–600 characters; a case's bank can hold up to 15 ideas.
+- Every footer identifies the fictional cases as **Developed with the help of AI (including ChatGPT)**.
 
 ## Canvas deployment
 
-The files are self-contained; no external scripts, API keys, servers, or student logins are required. The intended base GitHub Pages URL is:
+Published path: `https://bluehattom.github.io/CLA212/design-thinking-learning-labs/`
 
-`https://bluehattom.github.io/CLA212/design-thinking-learning-labs/`
-
-Paste each file's direct HTTPS URL into a Canvas module or an approved iframe. For iframe embedding, use `width="100%"` and a descriptive `title`; always include an independent direct-open link for mobile and assistive technology users. Verify downloads and PDF usability in Canvas Student View.
-
-Each page includes the footer disclosure: **Developed with the help of AI (including ChatGPT). All cases and simulated responses are fictional.**
+Link directly to a standalone file from each Canvas module or embed it in a titled, full-width iframe. Provide a direct-open link in addition to the embed. Test the new student-name fields, filename editing and **PDF download** in the institution's Canvas Student View, as iframe and third-party storage behavior depends on institutional settings.

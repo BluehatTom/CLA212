@@ -1,47 +1,28 @@
-# Design Thinking Learning Lab — Accessibility QA Report
+# CLA 212 Design Thinking Learning Labs — Accessibility and Functional QA
 
-**Revision:** 4 · **Date:** November 16, 2026 · **Target:** WCAG 2.2 AA (not an audit certification)
-
-## Scope
-
-All six standalone HTML learning labs, including the Jordan/campus-events and Elena/customer-pickup scenarios, updated concept/vocabulary guidance, Prototyping/Test navigation, optional stakeholder dialogues, and downloaded artifacts.
+**Revision:** 5 · **Date:** November 20, 2026 · **Target:** WCAG 2.2 AA. This report is a functional and technical check, not a formal conformance certification.
 
 ## Verified in this revision
 
-| Area | Result | Test performed |
-|---|---|---|
-| Responsive reflow | **Pass in tested views** | Chromium at 320, 768, and 1280 CSS pixels; two cases in all six labs; no document-level horizontal overflow |
-| Duplicate HTML IDs | **Pass in tested views** | Inspected rendered home and case screens at three viewport widths |
-| Interactive flows | **Pass in tested views** | Start, scenario selection, question/reveal, Prototyping steps 1→2→3, walkthrough, Test and Iterate initial round→observation→inline revision→second round |
-| Optional stakeholder dialogue | **Pass in tested views** | Open, ask and reveal, and verify the optional panel stays open afterward |
-| Interview coach separation | **Pass in tested views** | Coaching is outside the simulated conversation DOM and visibly labeled as coaching |
-| Idea-bank rules | **Present and verified** | Minimum 15 characters, maximum 600, up to 15 entries; on-screen instructions and input validation |
-| Concept and vocabulary panels | **Present and verified** | Expanded on home screens and included in active-case views; native accessible `details`/`summary` |
-| Focus/keyboard controls | **Functional in tested paths** | Native buttons, form fields, tabindex-reachable page headings, button-operated prototype reordering, no drag-only requirement |
-| PDF download and extraction | **Pass in tested outputs** | All six apps downloaded text PDFs; PDFs parsed by pypdf with selectable/extractable text; PDFs reported as tagged by `pdfinfo` |
-| PDF document structure | **Pass structural checks** | `/StructTreeRoot`, `/ParentTree`, marked content, heading and paragraph roles, `/Lang (en-US)`, `/MarkInfo /Marked true` |
-| Multi-page PDF | **Pass** | Generated a seven-page, 110-paragraph test PDF; all paragraphs extracted, no page losses |
-| Script execution | **Pass in tested paths** | No uncaught browser JavaScript errors during six-app click-through tests |
+| Check | Status and evidence |
+|---|---|
+| Browser execution | All six standalone HTML files executed in headless Chromium with no uncaught JavaScript exceptions in the 12 tested scenario paths. |
+| Responsive layout | At the tested 1240 px desktop and 320 px mobile widths, both scenarios in every lab had no document-level horizontal overflow. |
+| Identity and filenames | First name and last name controls were present for all six labs. Entering `Bob` and `Smith` prepopulated `Bob Smith Lab N`, and custom names such as `Bob Smith Lab 2 - campus.pdf` were honored on export. |
+| PDF buttons | Export was available in the active interview and all five follow-on labs. All 12 test cases generated PDF files with the expected name, student identity, lab number and persona. |
+| PDF text | PDF output was checked with `pdftotext`; headings, the student's name, case details and generated activity content were extractable. |
+| PDF tags | Generated files carry a structure tree, document-language metadata, and tagged headings/paragraphs; PDF structure is not equivalent to PDF/UA certification. |
+| Interview coaching | The sidebar/inline coaching was removed from the interview conversation. Coaching appears inside a collapsed, separate panel below the exercise. |
+| Manual completion/HTML export | No **Mark this lab complete** or **Download HTML alternative** controls appear in any of the six tested active-case views. |
+| Decisions and evidence | The later lab PDFs contain baseline evidence, stage-specific inputs, review results and recorded decision history. Interview PDF contains question/answer routes, evidence, student notes and separate coaching. |
+| Accessibility-minded controls | Standard form labels, accessible focus, native buttons, direct response reveal, non-drag prototype step controls, and language metadata remain in the apps. |
 
-## Accessibility design choices
+## Open checks before formal Canvas deployment
 
-- Native headings, labels, buttons, input controls, disclosure widgets, and visible focus outlines
-- Animated response pauses include a direct **Show response now** control; typing is not necessary for these controls
-- No game-critical dragging; prototype step order adjusted with buttons
-- The coach feedback is separated from the interview transcript, reducing speaker attribution confusion
-- Each file is self-contained; separate cases do not depend on browser-to-browser file transfers
-- Tagged PDF learning artifact includes headings, paragraphs, metadata and a logical text order; semantic HTML export is offered as an alternative
+1. Test complete keyboard-only and NVDA/JAWS/VoiceOver paths including the filename edit, collapsed coach review, student identity saving, and PDF download announcement.
+2. Check tagged-PDF reading order, structure, all long multi-page artifacts and non-Western-script input in a specialist PDF accessibility checker. The in-browser exporter primarily supports English/Western Latin text.
+3. Validate PDFs within the institution's Canvas iframe, in Canvas Student View, and through a direct-open link. Browser storage and downloads may differ in third-party iframe environments.
+4. Evaluate high zoom (200%/400%), reduced-motion, forced-colors and mobile screen readers across all case/activity stages.
+5. Check that students understand the fictional nature of personas and that simulated test outcomes are not treated as empirical evidence.
 
-## Known limits and required manual validation
-
-**No claim of full WCAG 2.2 AA, PDF/UA, or institutional accessibility certification is made.** These steps remain to be tested with assistive technologies and in the final course environment:
-
-1. Complete real NVDA/JAWS + Chrome/Edge and VoiceOver + Safari screen-reader acceptance tests of all major workflows, including wait states and download announcements.
-2. Test browser zoom at 200% and 400%, Windows forced-colors mode, keyboard-only use from start to completion, and mobile assistive technology.
-3. Test PDF tags, hierarchy and reading order using institutional PDF accessibility tools and assistive technologies; verify text alternatives where relevant. The exporter supports English/Western Latin characters and may simplify other scripts. Offer semantic HTML instead when characters do not preserve correctly.
-4. Test Canvas iframe restrictions and direct-open links on the institution’s actual Canvas installation; verify PDF download/open/submission permissions in Student View.
-5. Review all instructional prose and case responses with students for cognitive accessibility; avoid treating fictional outcomes as empirical validation.
-
-## Conclusion
-
-The revision resolves the observed usability problems in the tested flows and introduces tagged, selectable-text PDF export with HTML fallback. **It is ready for instructor pilot testing, but not yet for an accessibility-conformance claim.**
+**Conclusion:** The revised workflow and PDF controls passed the documented functional test cases. Do not claim full WCAG 2.2 AA or PDF/UA conformance without further manual verification.
